@@ -17,8 +17,8 @@ function *getUsers() {
 }
 function *saveUser() {
     try {
-        let activity = yield parse(this);
-        yield user.saveUser(id,username,email,password);
+        let user_data = yield parse(this);
+        yield user.saveUser(user_data);
         this.status = 201;
     }  catch (err) {
         console.log(err);
