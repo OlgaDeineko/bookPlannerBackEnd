@@ -6,7 +6,7 @@ const koa = require('koa'),
       mount = require('koa-mount'),
       route = require('koa-route'),
       parse = require('co-body'),
-      booksController = require('./components/books/books.ctrl.js');
+      booksController = require('./components/books/books.ctrl.js'),
       usersController = require('./components/users/users.ctrl.js');
 
 //  function *allowCrossDomain(req, res, next) {
