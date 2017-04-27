@@ -7,8 +7,10 @@ class Users {
     return  yield knex.select('*').from('users');
   }
   static *saveUser(user_data) {
-    // let insert_data = {id:id,username:username,email:email,password:password};
     return  yield knex('users').insert(user_data);
+  }
+  static *getUsersEmail(email) {
+    return  yield knex.select().from('users').where('email','=', email);
   }
 
 }

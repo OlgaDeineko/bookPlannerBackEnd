@@ -26,8 +26,20 @@ function *saveUser() {
         this.body = {error: err.message}
     }
 }
+function *availableUser(email){
+    try {
+        let result = yield user.getUsersEmail(email);
+        this.status = 200;
+        this.body = result;
+    } catch (err) {
+        console.log(err);
+        this.status = 500;
+        this.body = {error: err.message}
+    }
+}
 
 module.exports = {
     getUsers: getUsers,
-    saveUser:saveUser
+    saveUser:saveUser,
+    availableUser:availableUser
 }

@@ -17,8 +17,9 @@ const koa = require('koa'),
 // }
 // app.use(allowCrossDomain);
 app.use(cors());
-app.use(route.get("/users", usersController .getUsers));
-app.use(route.post("/saveUser", usersController .saveUser));
+app.use(route.get("/users", usersController.getUsers));
+app.use(route.post("/saveUser", usersController.saveUser));
+app.use(route.get("/availableEmail/:email", usersController.availableUser));
 // app.use(route.del("/delete", userActivityController.deleteUserActivity));
 
 
