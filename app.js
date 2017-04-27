@@ -6,7 +6,7 @@ const koa = require('koa'),
       mount = require('koa-mount'),
       route = require('koa-route'),
       parse = require('co-body'),
-      // booksController = require('./components/books/books.ctrl.js');
+      booksController = require('./components/books/books.ctrl.js');
       usersController = require('./components/users/users.ctrl.js');
 
 //  function *allowCrossDomain(req, res, next) {
@@ -16,11 +16,14 @@ const koa = require('koa'),
 //   next();
 // }
 // app.use(allowCrossDomain);
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 app.use(route.get("/users", usersController.getUsers));
 app.use(route.post("/saveUser", usersController.saveUser));
 app.use(route.get("/availableEmail/:email", usersController.availableUser));
-// app.use(route.del("/delete", userActivityController.deleteUserActivity));
+app.use(route.get("/books", booksController.getBooks));
+app.use(route.get("/books/:id", booksController.getBookById));
+app.use(route.post("/books/add", booksController.addBook));
+app.use(route.del("/delete", booksController.deleteBook));
 
 
 var port = process.env.PORT||3000;
